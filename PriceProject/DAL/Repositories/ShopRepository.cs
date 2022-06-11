@@ -20,8 +20,8 @@ namespace PriceProject.DAL.Repositories
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
                 var sqlQuery = "INSERT INTO SHOPS (NAME, COORDINATES, DESCRIPTION) VALUES(@NAME, @Coordinates, @Description); SELECT CAST(SCOPE_IDENTITY() as int)";
-                int? userId = db.Query<int>(sqlQuery, shop).FirstOrDefault();
-                shop.ID = userId.Value;
+                int? shopId = db.Query<int>(sqlQuery, shop).FirstOrDefault();
+                shop.ID = shopId.Value;
                 return shop;
             }
         }
